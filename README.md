@@ -18,6 +18,17 @@ If port 5173 is already occupied by the running demo, simply open the localhost 
 
 No project dependency installation, API key, or build step is needed. Internet access is required for Leaflet, Three.js, fonts and Esri satellite tiles. Refresh the browser after editing the files in `dist/`.
 
+## Hosting locally and on ChatGPT
+
+Both environments serve the same `dist/` files. No code changes, API keys, or build step are required to switch between them.
+
+- **Local:** run the command above from the `homemore` folder, then open http://localhost:5173.
+- **ChatGPT-hosted:** open https://sacred-spaces-safe-homes-demo.rrazr.chatgpt.site. The existing URL keeps its original name; the app is branded Homemore. Access follows the Site's sharing settings.
+
+Local edits appear after refreshing your browser. The hosted version is a separately published snapshot: ask Codex to publish this project's latest changes to its existing Site to update it. Uploading source to GitHub alone does not update the ChatGPT-hosted version.
+
+The local `.openai/hosting.json` links this checkout to the existing Site and specifies `dist` as the static directory. Preserve that file for future publication; it is not needed to run a GitHub clone locally. Both versions need internet access for external libraries and satellite imagery.
+
 ## Demo flow
 
 1. Outline a surface lot using map clicks. Three or more points automatically highlight the area and enable generation. Drag corners to resize the boundary; use Undo or Clear as needed.
