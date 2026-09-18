@@ -1,5 +1,78 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sacred Spaces · Safe Homes</title><meta name="description" content="An illustrative housing concept for faith communities. Interactive pitch demo."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230d3938'/%3E%3Cpath d='M8 21 20 10 32 21v11H8Z' fill='none' stroke='%23bcedcf' stroke-width='3'/%3E%3C/svg%3E"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="style.css"><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script></head>
-<body><header class="topbar"><a class="brand" href="./"><span class="brand-icon">⌂</span><span>Sacred Spaces<span class="brand-sub">SAFE HOMES COPILOT</span></span></a><div class="project-name">Biola University <span>/</span> Housing exploration</div><div class="top-actions"><span class="demo-tag">ILLUSTRATIVE DEMO</span><button id="restart" class="subtle">Restart</button></div></header>
-<main><aside class="sidebar"><div class="intro"><div class="eyebrow">A PLACE TO BEGIN</div><h1>See what your<br>space could become.</h1><p>A housing concept. A clearer conversation. A next step with the right people.</p></div><nav class="steps" aria-label="Demo stages"><button class="step active" data-step="0"><span>01</span><div>Choose your space<small>Outline an area on the map</small></div></button><button class="step" data-step="1" disabled><span>02</span><div>Explore the vision<small>A Fast-Set Box community</small></div></button><button class="step" data-step="2" disabled><span>03</span><div>Bring people together<small>Presentations & expert guidance</small></div></button></nav><section id="side-content"></section><div class="sidebar-bottom"><span class="mini-icon">✧</span><p>Better questions today.<br>Better decisions together.</p></div></aside>
-<section class="workspace"><div class="workspace-bar"><div><span class="eyebrow" id="view-kicker">SITE EXPLORATION</span><h2 id="view-title">An existing space. A new possibility.</h2></div><span class="location">⌖ La Mirada, California</span></div><div class="scene-wrap"><div id="map" aria-label="Biola campus map"></div><div id="three-view" hidden aria-label="Interactive illustrative housing model"></div><div id="map-toolbar" class="map-toolbar"><button id="draw" class="tool selected">◇ Draw boundary</button><button id="finish" class="tool" disabled>✓ Finish</button><button id="undo" class="tool">↶ Undo</button><button id="clear" class="tool">Clear</button></div><div id="scene-toolbar" class="map-toolbar" hidden><button id="orbit" class="tool selected">↻ Slow orbit</button><button id="top" class="tool">Top view</button><button id="perspective" class="tool">Perspective</button><button id="capture" class="tool">↓ Save image</button></div><div id="map-hint" class="map-hint"><span class="hint-number">1</span><div><strong>Start with a space you know.</strong><span>Click around a surface parking lot. Finish with at least 3 points.</span></div><button id="preset">Use sample boundary</button></div><div id="scene-label" class="scene-label" hidden><span>CONCEPT 01</span><h3>Room for a new beginning.</h3><p>12 Fast-Set Boxes · prepared illustrative scenario</p></div><div id="legend" class="legend" hidden><span><i class="home-dot"></i>Housing</span><span><i class="access-dot"></i>Access aisle</span><span><i class="buffer-dot"></i>Study boundary</span></div><div id="loading" class="loading" hidden><div class="loading-ring"></div><div class="eyebrow">PREPARING YOUR CONCEPT</div><h2 id="loading-title">A new perspective on this space.</h2><p id="loading-copy">Loading the prepared demo scenario</p><div class="loading-track"><span></span></div></div><div id="map-error" hidden class="map-error">Satellite imagery is unavailable. Please reconnect and refresh before recording.</div></div><section id="results" class="results" hidden></section><section id="deliverables" hidden></section><footer class="notice"><strong>Preliminary feasibility study.</strong> Not final legal, architectural, or financial advice. Requires licensed professional review.</footer></section></main><div id="toast" role="status"></div><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script type="module" src="app.js"></script></body></html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homemore</title>
+    <meta name="description" content="An illustrative housing concept for faith communities. Interactive pitch demo.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230d3938'/%3E%3Cpath d='M8 21 20 10 32 21v11H8Z' fill='none' stroke='%23bcedcf' stroke-width='3'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css?v=center-logo-9">
+    <script
+        type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+</head>
+
+<body>
+    <header class="topbar"><a class="brand" href="./"><span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10 12 3 20 10v11H4Z"/><path d="M9 21v-8h6v8"/></svg></span><span>Homemore<span
+                    class="brand-sub">HOUSING COPILOT</span></span></a></header>
+    <main>
+        <aside class="sidebar">
+            <div class="intro">
+                <h1>See what your<br>space could become.</h1>
+                <p>A housing concept. A clearer conversation. A next step with the right people.</p>
+            </div>
+            <nav class="steps" aria-label="Demo stages"><button class="step active" data-step="0"><span>01</span>
+                    <div>Choose your space<small>Outline an area on the map</small></div>
+                </button><button class="step" data-step="1" disabled><span>02</span>
+                    <div>Explore the vision<small>A Fast-Set Box community</small></div>
+                </button><button class="step" data-step="2" disabled><span>03</span>
+                    <div>Bring people together<small>Presentations & expert guidance</small></div>
+                </button></nav>
+            <section id="side-content"></section>
+            <div class="sidebar-bottom"><span class="mini-icon">✧</span>
+                <p>Better questions today.<br>Better decisions together.</p>
+            </div>
+        </aside>
+        <section class="workspace">
+            <div class="scene-wrap">
+                <div id="map" aria-label="Biola campus map"></div>
+                <div id="three-view" hidden aria-label="Interactive illustrative housing model"></div>
+                <div id="map-toolbar" class="map-toolbar"><button id="undo"
+                        class="tool">↶ Undo</button><button id="clear" class="tool">Clear</button></div>
+                <div id="scene-toolbar" class="map-toolbar" hidden><button id="orbit" class="tool selected">↻ Slow
+                        orbit</button><button id="top" class="tool">Top view</button><button id="perspective"
+                        class="tool">Perspective</button><button id="capture" class="tool">↓ Save image</button></div>
+                <!-- <div id="map-hint" class="map-hint"><span class="hint-number">1</span>
+                    <div><strong>Start with a space you know.</strong><span>Click around a surface parking lot. Finish
+                            with at least 3 points.</span></div><button id="preset">Use sample boundary</button>
+                </div> -->
+                <div id="scene-label" class="scene-label" hidden><span>CONCEPT 01</span>
+                    <h3>Room for a new beginning.</h3>
+                    <p>12 Fast-Set Boxes · prepared illustrative scenario</p>
+                </div>
+                <div id="legend" class="legend" hidden><span><i class="home-dot"></i>Housing</span><span><i class="buffer-dot"></i>Study
+                        boundary</span></div>
+                <div id="loading" class="loading" hidden>
+                    <div class="loading-ring"></div>
+                    <div class="eyebrow">PREPARING YOUR CONCEPT</div>
+                    <h2 id="loading-title">A new perspective on this space.</h2>
+                    <p id="loading-copy">Loading the prepared demo scenario</p>
+                    <div class="loading-track"><span></span></div>
+                </div>
+                <div id="map-error" hidden class="map-error">Satellite imagery is unavailable. Please reconnect and
+                    refresh before recording.</div>
+            </div>
+            <section id="results" class="results" hidden></section>
+            <section id="deliverables" hidden></section>
+            <footer class="notice"><strong>Preliminary feasibility study.</strong> Not final legal, architectural, or
+                financial advice. Requires licensed professional review.</footer>
+        </section>
+    </main>
+    <div id="toast" role="status"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="app.js?v=drag-boundary-8"></script>
+</body>
+
+</html>

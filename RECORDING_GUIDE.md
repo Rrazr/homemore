@@ -11,7 +11,7 @@ Keep the full MVP plan unchanged. This prototype demonstrates the intended journ
 | 30–50 sec | Generate housing concept, then slowly orbit | This illustrative concept shows how Fast-Set Boxes could help leadership picture a housing community. |
 | 50–65 sec | Show the unit footprint and review requirements | The conversation includes practical questions about access, utilities, parking and local approvals. |
 | 65–80 sec | Prepare your next steps, export presentation | Take a draft concept to your board, along with a focused brief for professional review. |
-| 80–90 sec | Show the expert contacts | Sacred Spaces, Safe Homes helps churches take an informed first step with the people qualified to guide what comes next. |
+| 80–90 sec | Show the expert contacts | Homemore helps churches take an informed first step with the people qualified to guide what comes next. |
 
 ## Recording tips
 

@@ -1,15 +1,27 @@
-# Sacred Spaces, Safe Homes — pitch demo
+# Homemore — pitch demo
 
 This is a deliberately scripted prototype for a 90-second pitch video. The full MVP plan in the conversation remains unchanged.
 
 ## Run
 
-Serve `dist/` with any static HTTP server. Internet access is required for Leaflet, Three.js, fonts and Esri satellite tiles. No API key or build step is needed.
+Open PowerShell and navigate to the project folder.
+
+Run this command:
+
+```powershell
+python -m http.server 5173 --bind 127.0.0.1 --directory dist
+```
+
+Then open [http://localhost:5173](http://localhost:5173) in your browser. Keep PowerShell open while using the demo; press **Ctrl+C** to stop the server.
+
+If port 5173 is already occupied by the running demo, simply open the localhost link. If another application uses that port, replace `5173` with `5174` in both the command and browser URL.
+
+No project dependency installation, API key, or build step is needed. Internet access is required for Leaflet, Three.js, fonts and Esri satellite tiles. Refresh the browser after editing the files in `dist/`.
 
 ## Demo flow
 
-1. Outline a surface lot using map clicks, then select Finish. A sample boundary is also available.
-2. Select Generate housing concept. The prepared twelve-unit scenario appears in an interactive 3D scene.
+1. Outline a surface lot using map clicks. Three or more points automatically highlight the area and enable generation. Drag corners to resize the boundary; use Undo or Clear as needed.
+2. Select Generate housing plan. The prepared twelve-unit scenario appears in an interactive 3D scene.
 3. Rotate the scene or use Top view and Perspective.
 4. Select Prepare your next steps. Download the browser slide presentation and the expert discussion brief. The presentation can be printed to PDF.
 
@@ -17,7 +29,8 @@ Serve `dist/` with any static HTTP server. Internet access is required for Leafl
 
 - Map clicks, boundary area, interactive 3D, image capture and downloads work.
 - The twelve-unit concept is prepared, not calculated feasibility. It is centered on the drawn area but does not validate fit.
-- The Fast-Set Box footprint is 19 x 8 feet, as published by the manufacturer. Model height (2.65 m), exterior details and the 20-foot access aisle are illustrative assumptions.
+- The Fast-Set Box footprint is 19 x 8 feet, as published by the manufacturer. Model height (2.65 m) and exterior details are illustrative assumptions.
+- The separate 3D canvas uses simplified surrounding footprints traced from the map imagery. Surrounding building heights are approximate; the scene does not display satellite imagery or a proposed access aisle.
 - No zoning eligibility, parking counts, project budget or utility capacity is established.
 - Expert links are official contact or verification resources, not endorsements or committed partners.
 
