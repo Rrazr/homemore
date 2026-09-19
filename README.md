@@ -79,3 +79,7 @@ Asserts, without dependencies, that every placed home and its aisle stay inside 
 ## Walkthrough
 
 On the first visit in a browser session, a ghost cursor zooms to the sample lot, clicks four corners and shows homes filling the outline. It only draws preview layers: the real boundary and the numbers are untouched, and any click, drag or zoom on the map ends it. **▶ Show me how** in the hint replays it. It does not autoplay with `?clean=1` or when the visitor prefers reduced motion.
+
+## Hosting on Vercel
+
+Connect this repository with the project root set to the repository root. The checked-in `vercel.json` sets the framework to Other, skips the build step, and serves `dist/` as the output directory. Deployments from GitHub will use those settings automatically. The `dist/` folder must remain committed because it is the website itself, not generated build output.
