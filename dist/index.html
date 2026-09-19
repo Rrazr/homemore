@@ -9,7 +9,7 @@
     <link rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230d3938'/%3E%3Cpath d='M8 21 20 10 32 21v11H8Z' fill='none' stroke='%23bcedcf' stroke-width='3'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="style.css?v=center-logo-9">
+    <link rel="stylesheet" href="style.css?v=fit-14">
     <script
         type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 </head>
@@ -20,13 +20,13 @@
     <main>
         <aside class="sidebar">
             <div class="intro">
-                <h1>See what your<br>space could become.</h1>
+                <h1>See what your <br>space could become.</h1>
                 <p>A housing concept. A clearer conversation. A next step with the right people.</p>
             </div>
             <nav class="steps" aria-label="Demo stages"><button class="step active" data-step="0"><span>01</span>
                     <div>Choose your space<small>Outline an area on the map</small></div>
                 </button><button class="step" data-step="1" disabled><span>02</span>
-                    <div>Explore the vision<small>A Fast-Set Box community</small></div>
+                    <div>Explore the vision<small>Housing styles &amp; the 3D concept</small></div>
                 </button><button class="step" data-step="2" disabled><span>03</span>
                     <div>Bring people together<small>Presentations & expert guidance</small></div>
                 </button></nav>
@@ -37,32 +37,44 @@
         </aside>
         <section class="workspace">
             <div class="scene-wrap">
-                <div id="map" aria-label="Biola campus map"></div>
+                <div id="map" aria-label="Satellite map for outlining a study area"></div>
                 <div id="three-view" hidden aria-label="Interactive illustrative housing model"></div>
                 <div id="map-toolbar" class="map-toolbar"><button id="undo"
                         class="tool">↶ Undo</button><button id="clear" class="tool">Clear</button></div>
                 <div id="scene-toolbar" class="map-toolbar" hidden><button id="orbit" class="tool selected">↻ Slow
                         orbit</button><button id="top" class="tool">Top view</button><button id="perspective"
-                        class="tool">Perspective</button><button id="capture" class="tool">↓ Save image</button></div>
-                <!-- <div id="map-hint" class="map-hint"><span class="hint-number">1</span>
-                    <div><strong>Start with a space you know.</strong><span>Click around a surface parking lot. Finish
-                            with at least 3 points.</span></div><button id="preset">Use sample boundary</button>
-                </div> -->
+                        class="tool">Perspective</button><button id="replay" class="tool">▶ Replay build</button><button id="utilities" class="tool">⚡ Utilities</button><button id="arrange" class="tool">✥ Arrange</button><button id="capture" class="tool">↓ Save image</button></div>
+                <form id="map-search" class="map-search" role="search"><input id="address" type="search"
+                        placeholder="Search an address or place" aria-label="Search an address or place"
+                        autocomplete="off"><button id="search-go" class="tool selected" type="submit">Search</button>
+                    <ul id="search-results" hidden></ul>
+                </form>
+                <div id="map-hint" class="map-hint"><span class="hint-number">1</span>
+                    <div><strong>Start with a space you know.</strong><span>Search an address, then click around a
+                            surface parking lot. Three or more points make a boundary.</span></div><button
+                        id="tutorial">▶ Show me how</button><button id="preset">Use sample boundary</button><button id="hint-close" class="hint-close"
+                        aria-label="Hide this hint" title="Hide hint (H)">×</button>
+                </div>
                 <div id="scene-label" class="scene-label" hidden><span>CONCEPT 01</span>
                     <h3>Room for a new beginning.</h3>
-                    <p>12 Fast-Set Boxes · prepared illustrative scenario</p>
+                    <p></p>
                 </div>
+                <div id="utility-legend" class="utility-legend" hidden></div>
+                <div id="arrange-bar" class="arrange-bar" hidden><span id="arrange-status"></span><button
+                        id="arrange-add">+ Add home</button><button id="arrange-rotate" title="R">⟳ Turn</button><button
+                        id="arrange-remove" title="Delete">Remove</button><button id="arrange-reset">Reset to
+                        auto-fit</button></div>
                 <div id="legend" class="legend" hidden><span><i class="home-dot"></i>Housing</span><span><i class="buffer-dot"></i>Study
                         boundary</span></div>
                 <div id="loading" class="loading" hidden>
                     <div class="loading-ring"></div>
                     <div class="eyebrow">PREPARING YOUR CONCEPT</div>
                     <h2 id="loading-title">A new perspective on this space.</h2>
-                    <p id="loading-copy">Loading the prepared demo scenario</p>
+                    <p id="loading-copy">Fitting homes to your boundary</p>
                     <div class="loading-track"><span></span></div>
                 </div>
                 <div id="map-error" hidden class="map-error">Satellite imagery is unavailable. Please reconnect and
-                    refresh before recording.</div>
+                    refresh.</div>
             </div>
             <section id="results" class="results" hidden></section>
             <section id="deliverables" hidden></section>
@@ -70,9 +82,19 @@
                 financial advice. Requires licensed professional review.</footer>
         </section>
     </main>
+    <dialog id="style-gallery" class="gallery" aria-labelledby="gallery-title">
+        <div class="gallery-head">
+            <div>
+                <h2 id="gallery-title">Choose a housing style</h2>
+                <p>Footprints are drawn to the same scale and come from each maker’s published figures. Exteriors in
+                    the 3D view are illustrative.</p>
+            </div><button id="gallery-close" class="hint-close" aria-label="Close">×</button>
+        </div>
+        <div id="style-grid" class="style-grid"></div>
+    </dialog>
     <div id="toast" role="status"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script type="module" src="app.js?v=drag-boundary-8"></script>
+    <script type="module" src="app.js?v=fit-14"></script>
 </body>
 
 </html>
