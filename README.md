@@ -52,3 +52,8 @@ The default is a study area within Lot C, beside the Grove and South Field, base
 ## Implementation checkpoint
 
 The static interface, model, satellite alignment, image capture, browser-slide export and expert discussion brief are implemented. Browser checks verified boundary prerequisites, sample-boundary loading, the concept reveal and presentation-download confirmation. JavaScript syntax checks pass. Deployment is managed by the existing project identity in `.openai/hosting.json`; do not create a replacement Site. See `RECORDING_GUIDE.md` for the pitch sequence.
+
+## Hosting on Vercel
+
+Connect this repository with the project root set to the repository root. The checked-in `vercel.json` sets the framework to Other, skips the build step, and serves `dist/` as the output directory. Deployments from GitHub will use those settings automatically. The `dist/` folder must remain committed because it is the website itself, not generated build output.
+
