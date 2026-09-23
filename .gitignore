@@ -2,5 +2,8 @@
 *.tar.gz
 tmp/
 node_modules/
-.openai/
 graphify-out/
+
+# Agent related
+.openai/
+.claude/
