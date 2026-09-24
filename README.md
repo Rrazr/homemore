@@ -83,3 +83,9 @@ On the first visit in a browser session, a ghost cursor zooms to the sample lot,
 ## Hosting on Vercel
 
 Connect this repository with the project root set to the repository root. The checked-in `vercel.json` sets the framework to Other, skips the build step, and serves `dist/` as the output directory. Deployments from GitHub will use those settings automatically. The `dist/` folder must remain committed because it is the website itself, not generated build output.
+
+## Vercel Web Analytics
+
+This plain HTML site uses Vercel Web Analytics without a JavaScript framework. The tracking snippet is included in `dist/index.html` and loads `/_vercel/insights/script.js` when deployed.
+
+To activate collection, open the Vercel project, select **Analytics**, click **Enable**, and redeploy the latest `main` commit. The script endpoint is supplied by Vercel after Analytics is enabled. It may return 404 on localhost because the local Python server does not provide Vercel's analytics endpoint; that does not affect the app.
